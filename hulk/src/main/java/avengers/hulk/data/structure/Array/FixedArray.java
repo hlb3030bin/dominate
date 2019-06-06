@@ -31,7 +31,7 @@ public class FixedArray {
         } else {
             throw new IllegalArgumentException("Illegal Capacity: " +
                     initialCapacity);
-      
+
         }
     }
 
