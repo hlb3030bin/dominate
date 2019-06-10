@@ -1,12 +1,12 @@
 package avengers.spiderman.Proxy;
 
 
+import java.lang.reflect.Method;
+
+import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.springframework.cglib.proxy.Callback;
-import org.springframework.cglib.proxy.Enhancer;
 
-import java.lang.reflect.Method;
 
 /**
  * @description: TODO
@@ -16,7 +16,7 @@ import java.lang.reflect.Method;
 /**
  * CGlib动态代理类
  */
-public class CGLibProxy implements MethodInterceptor, Callback {
+public class CGLibProxy implements MethodInterceptor {
 
     // CGlib需要代理的目标对象
     private Object targetObject;
