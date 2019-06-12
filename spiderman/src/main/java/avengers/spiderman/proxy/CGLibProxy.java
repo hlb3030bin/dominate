@@ -1,4 +1,4 @@
-package avengers.spiderman.Proxy;
+package avengers.spiderman.proxy;
 
 
 import java.lang.reflect.Method;
