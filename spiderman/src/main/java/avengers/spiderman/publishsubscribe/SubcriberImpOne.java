@@ -1,5 +1,8 @@
 package avengers.spiderman.publishsubscribe;
 
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+
 /**
  * @description: TODO
  * @author: huanglb
@@ -10,6 +13,7 @@ public class SubcriberImpOne<M> implements ISubcriber<M> {
 
     public SubcriberImpOne(String name) {
         super();
+        Lock lock= new ReentrantLock();
         this.name = name;
     }
 
