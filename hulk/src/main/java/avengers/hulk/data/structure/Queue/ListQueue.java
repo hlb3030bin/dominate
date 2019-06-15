@@ -30,7 +30,7 @@ public class ListQueue<T> {
         if(cnt<0){
             throw new NoSuchElementException();
         }
-        T t= data.remove(cnt);
+        T t= data.remove(0);
         cnt--;
         return t;
 
@@ -45,14 +45,6 @@ public class ListQueue<T> {
         return true;
     }
 
-    public boolean pull(T t){
-        if(cnt<0){
-            return false;
-        }
-        data.remove(cnt);
-        cnt--;
-        return true;
-    }
     //返回队列头元素
     public T element(){
         return data.get(0);
@@ -63,5 +55,13 @@ public class ListQueue<T> {
     }
     public boolean isFull(){
         return cnt==size;
+    }
+
+    public static void main(String[] args) {
+        ListQueue<Integer> dd= new  ListQueue();
+        dd.add(10);
+        dd.add(100);
+        dd.add(1000);
+        Integer dx=dd.remove();
     }
 }
