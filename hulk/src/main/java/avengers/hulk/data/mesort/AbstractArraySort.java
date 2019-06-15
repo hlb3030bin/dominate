@@ -1,13 +1,11 @@
-package avengers.hulk.data.structure.Array;
-
-import javax.sound.midi.Soundbank;
+package avengers.hulk.data.mesort;
 
 /**
  * @description: TODO
  * @author: huanglb
  * @date 2019/6/15 13:41
  */
-public abstract class AbstractArraySort implements IArraySort {
+public  abstract class AbstractArraySort implements IArraySort {
 
     protected long[] a;
     protected int nElems;

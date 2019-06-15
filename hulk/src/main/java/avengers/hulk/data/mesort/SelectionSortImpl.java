@@ -1,11 +1,13 @@
-package avengers.hulk.data.structure.Array;
+package avengers.hulk.data.mesort;
+
+
 
 /**
  * @description: TODO  选择排序
  * @author: huanglb
  * @date 2019/6/15 14:03
  */
-public class SelectionSortImpl extends AbstractArraySort{
+public class SelectionSortImpl extends AbstractArraySort {
     /**
      * @param max
      */

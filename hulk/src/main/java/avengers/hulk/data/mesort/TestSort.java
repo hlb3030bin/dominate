@@ -1,9 +1,14 @@
-package avengers.hulk.data.structure.Array;
+package avengers.hulk.data.mesort;
+
+import avengers.hulk.data.structure.Array.IArraySort;
+import avengers.hulk.data.mesort.AbstractArraySort;
+import avengers.hulk.data.mesort.BubbleSortImpl;
+import avengers.hulk.data.mesort.InsertionSortImpl;
+import avengers.hulk.data.mesort.SelectionSortImpl;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import java.util.RandomAccess;
 
 /**
  * @description: TODO
