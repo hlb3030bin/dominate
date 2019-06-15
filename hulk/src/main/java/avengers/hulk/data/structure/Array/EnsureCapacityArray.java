@@ -7,7 +7,7 @@ import java.util.Arrays;
  * @author: huanglb
  * @date 2019/6/6 13:38
  */
-public class EnsureCapacityArray {
+public  class EnsureCapacityArray {
 
     private static final Object[] EMPTY_ELEMENTDATA = {};
 
