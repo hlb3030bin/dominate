@@ -18,6 +18,14 @@ public class MyCircularQueue {
     public MyCircularQueue(int k) {
         this.capacity = k;
         this.array = new int[this.capacity];
+        Object ob= new Object();
+        try {
+            ob.wait();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        ob.notify();
+
     }
 
     /**
@@ -68,7 +76,7 @@ public class MyCircularQueue {
      * Get the front item from the queue.
      */
     public int Front() {
-        if (count == 0 ) {
+        if (count == 0) {
             return -1;
         }
         return array[head];
@@ -78,7 +86,7 @@ public class MyCircularQueue {
      * Get the last item from the queue.
      */
     public int Rear() {
-        if (count == 0 ) {
+        if (count == 0) {
             return -1;
         }
         return array[tail];

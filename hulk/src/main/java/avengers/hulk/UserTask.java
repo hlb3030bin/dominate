@@ -35,6 +35,7 @@ public class UserTask {
      * 初始化执行
      */
     public void execute() {
+
         //每一分钟执行一次
         es.scheduleWithFixedDelay(new Runnable() {
             public void run() {
