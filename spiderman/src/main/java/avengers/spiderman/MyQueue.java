@@ -1,4 +1,4 @@
-package avengers;
+package avengers.spiderman;
 
 import java.util.LinkedList;
 import java.util.concurrent.atomic.AtomicInteger;
