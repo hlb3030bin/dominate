@@ -1,0 +1,68 @@
+//定义一个抽象的规则
+public abstract class BasicRule<CORE_ITEM, T extends RuleContext<CORE_ITEM>>{
+    //有两个方法，evaluate用于判断是否经过规则执行，execute用于执行具体的规则内容。
+    public abstract boolean evaluate(T context);
+    public abstract void execute(T context) {
+}
+
+//定义所有的规则具体实现
+//规则1：判断服务可用性
+public class ServiceAvailableRule extends BasicRule<UserPortrait, UserPortraitRuleContext> {
+    @Override
+    public boolean evaluate(UserPortraitRuleContext context) {
+        TakeawayUserPortraitBasicInfo basicInfo = context.getBasicInfo();
+        if (basicInfo.isServiceFail()) {
+              return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void execute(UserPortraitRuleContext context) {}
+
+}
+//规则2：判断当前用户属性是否符合当前资源位投放的用户属性要求
+public class UserGroupRule extends BasicRule<UserPortrait, UserPortraitRuleContext> {
+    @Override
+    public boolean evaluate(UserPortraitRuleContext context) {}
+
+    @Override
+    public void execute(UserPortraitRuleContext context) {
+        UserPortrait userPortraitPO = context.getData();
+        if(userPortraitPO.getUserGroup() == context.getBasicInfo().getUserGroup().code) {
+          context.setValid(true);
+        } else {
+          context.setValid(false);
+        }
+    }
+}
+
+//规则3：判断当前用户是否在投放城市，具体逻辑省略
+public class CityInfoRule extends BasicRule<UserPortrait, UserPortraitRuleContext> {}
+//规则4：根据用户的活跃度进行资源过滤，具体逻辑省略
+public class UserPortraitRule extends BasicRule<UserPortrait, UserPortraitRuleContext> {} 
+
+//我们通过spring将这些规则串起来组成一个一个请求链
+    <bean name="serviceAvailableRule" class="com.dianping.takeaway.ServiceAvailableRule"/>
+    <bean name="userGroupValidRule" class="com.dianping.takeaway.UserGroupRule"/>
+    <bean name="cityInfoValidRule" class="com.dianping.takeaway.CityInfoRule"/>
+    <bean name="userPortraitRule" class="com.dianping.takeaway.UserPortraitRule"/>
+
+    <util:list id="userPortraitRuleChain" value-type="com.dianping.takeaway.Rule">
+        <ref bean="serviceAvailableRule"/>
+        <ref bean="userGroupValidRule"/>
+        <ref bean="cityInfoValidRule"/>
+        <ref bean="userPortraitRule"/>
+    </util:list>
+
+//规则执行
+public class DefaultRuleEngine{
+    @Autowired
+    List<BasicRule> userPortraitRuleChain;
+
+    public void invokeAll(RuleContext ruleContext) {
+        for(Rule rule : userPortraitRuleChain) {
+            rule.evaluate(ruleContext)
+        }
+    }
+}
